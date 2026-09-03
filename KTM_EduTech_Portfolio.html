@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8" />
+
+<style id="webmakerstyle">
+
+</style>
+</head>
+<body>
+<!doctype html>
+<html lang="en" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>KTM EduTech | Portfolio</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            navy: '#123456',
+            gold: '#d4af37',
+            'gold-light': '#fedc69',
+            accent: '#407cdc',
+            danger: '#e91a1a'
+          },
+          fontFamily: {
+            primary: ['"Google Sans"', 'Poppins', 'sans-serif'],
+            secondary: ['Poppins', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html { height: 100%; }
+    body { height: 100%; margin: 0; font-family: 'Poppins', sans-serif; }
+
+    /* Smooth scrolling */
+    html { scroll-behavior: smooth; }
+
+    /* Custom scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0a1e38; }
+    ::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 4px; }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideInLeft {
+      from { opacity: 0; transform: translateX(-40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes slideInRight {
+      from { opacity: 0; transform: translateX(40px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    @keyframes scaleIn {
+      from { opacity: 0; transform: scale(0.9); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    @keyframes pulseGlow {
+      0%, 100% { box-shadow: 0 0 5px rgba(212,175,55,0.3); }
+      50% { box-shadow: 0 0 20px rgba(212,175,55,0.6); }
+    }
+
+    .anim-fade-up { animation: fadeInUp 0.7s ease-out forwards; opacity: 0; }
+    .anim-fade { animation: fadeIn 0.6s ease-out forwards; opacity: 0; }
+    .anim-slide-left { animation: slideInLeft 0.7s ease-out forwards; opacity: 0; }
+    .anim-slide-right { animation: slideInRight 0.7s ease-out forwards; opacity: 0; }
+    .anim-scale { animation: scaleIn 0.5s ease-out forwards; opacity: 0; }
+    .anim-float { animation: float 3s ease-in-out infinite; }
+
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.3s; }
+    .delay-4 { animation-delay: 0.4s; }
+    .delay-5 { animation-delay: 0.5s; }
+    .delay-6 { animation-delay: 0.6s; }
+    .delay-7 { animation-delay: 0.7s; }
+    .delay-8 { animation-delay: 0.8s; }
+
+    /* Gold shimmer text */
+    .gold-shimmer {
+      background: linear-gradient(90deg, #d4af37, #fedc69, #d4af37, #fedc69, #d4af37);
+      background-size: 200% auto;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: shimmer 4s linear infinite;
+    }
+
+    /* Page transitions */
+    .page-transition { opacity: 0; transition: opacity 0.3s ease-out; }
+    .page-visible { opacity: 1; }
+
+    /* Card hover */
+    .card-hover { transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+    .card-hover:hover { transform: translateY(-8px); }
+
+    /* Mobile menu */
+    .mobile-menu { transform: translateX(100%); transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1); }
+    .mobile-menu.open { transform: translateX(0); }
+
+    /* Hero parallax overlay */
+    .hero-overlay {
+      background: linear-gradient(135deg, rgba(18,52,86,0.92) 0%, rgba(18,52,86,0.7) 50%, rgba(18,52,86,0.4) 100%);
+    }
+
+    /* Glow button */
+    .glow-btn {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+    .glow-btn::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: rgba(255,255,255,0.15);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: width 0.6s, height 0.6s;
+    }
+    .glow-btn:hover::before {
+      width: 300px;
+      height: 300px;
+    }
+
+    /* Skill bar animation */
+    .skill-fill { width: 0; transition: width 1.5s cubic-bezier(0.16, 1, 0.3, 1); }
+    .skill-fill.active { width: var(--skill-width); }
+
+    /* Form input */
+    .form-input:focus {
+      border-color: #d4af37;
+      box-shadow: 0 0 0 3px rgba(212,175,55,0.15);
+    }
+
+    /* Active nav link */
+    .nav-active { color: #d4af37 !important; }
+
+    /* Footer visibility */
+    .footer-container {
+      opacity: 0;
+      transition: opacity 0.6s ease-out;
+      pointer-events: none;
+    }
+    .footer-container.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  </head>
+ <body class="h-full">
+  <div id="app-wrapper" class="w-full h-full overflow-auto bg-white" style="font-family: 'Poppins', sans-serif;"><!-- NAVBAR - UNIVERSAL PERSISTENT HEADER -->
+   <header id="navbar" class="fixed top-0 left-0 w-full z-50 transition-all duration-500" style="background: transparent;">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" role="navigation" aria-label="Main navigation">
+     <div class="flex items-center justify-between h-20"><!-- Logo --> <a href="#" onclick="navigateTo('home'); return false;" class="logo flex items-center gap-2 hover:opacity-80 transition-opacity"> <img src="https://ik.imagekit.io/ktmedutech/ktmedtechlog.png" alt="KTM EduTech" class="h-8" loading="lazy" onerror="this.style.display='none'; this.nextElementSibling && (this.nextElementSibling.style.display='inline');"> <span class="text-white font-bold text-lg tracking-wide" style="display:none;">KTM EduTech</span> </a> <!-- Desktop Navigation Links -->
+      <div class="hidden lg:flex items-center gap-1"><a href="#" onclick="navigateTo('home'); return false;" class="nav-link px-4 py-2 text-sm font-medium text-white hover:text-gold transition-colors duration-300 rounded-lg hover:bg-white/5">Home</a> <!-- About Dropdown -->
+       <div class="nav-dropdown-wrapper relative group"><button class="nav-link px-4 py-2 text-sm font-medium text-white hover:text-gold transition-colors duration-300 rounded-lg hover:bg-white/5 flex items-center gap-1 group-hover:text-gold"> About <i data-lucide="chevron-down" style="width:16px;height:16px;" class="transition-transform group-hover:rotate-180"></i> </button>
+        <div class="nav-dropdown absolute left-0 mt-0 w-56 bg-navy/95 backdrop-blur-xl border border-white/10 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 py-2"><a href="#" onclick="navigateTo('about'); setTimeout(() => scrollToSection('about-mission-vision'), 350); return false;" class="nav-dropdown-item block px-4 py-2.5 text-sm text-white/70 hover:text-gold hover:bg-white/5 transition-colors"> <i data-lucide="target" style="width:16px;height:16px;" class="inline mr-2 opacity-60"></i> Mission &amp; Vision </a> <a href="#" onclick="navigateTo('about'); setTimeout(() => scrollToSection('about-work-experience'), 350); return false;" class="nav-dropdown-item block px-4 py-2.5 text-sm text-white/70 hover:text-gold hover:bg-white/5 transition-colors"> <i data-lucide="briefcase" style="width:16px;height:16px;" class="inline mr-2 opacity-60"></i> Work Experience </a> <a href="#" onclick="navigateTo('about'); setTimeout(() => scrollToSection('about-education'), 350); return false;" class="nav-dropdown-item block px-4 py-2.5 text-sm text-white/70 hover:text-gold hover:bg-white/5 transition-colors"> <i data-lucide="graduation-cap" style="width:16px;height:16px;" class="inline mr-2 opacity-60"></i> Education </a> <a href="#" onclick="navigateTo('about'); setTimeout(() => scrollToSection('about-skills'), 350); return false;" class="nav-dropdown-item block px-4 py-2.5 text-sm text-white/70 hover:text-gold hover:bg-white/5 transition-colors"> <i data-lucide="zap" style="width:16px;height:16px;" class="inline mr-2 opacity-60"></i> Skills </a>
+        </div>
+       </div><!-- Services Dropdown -->
+       <div class="nav-dropdown-wrapper relative group"><button class="nav-link px-4 py-2 text-sm font-medium text-white hover:text-gold transition-colors duration-300 rounded-lg hover:bg-white/5 flex items-center gap-1 group-hover:text-gold"> Services <i data-lucide="chevron-down" style="width:16px;height:16px;" class="transition-transform group-hover:rotate-180"></i> </button>
+        <div class="nav-dropdown absolute left-0 mt-0 w-56 bg-navy/95 backdrop-blur-xl border border-white/10 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 py-2"><a href="#" onclick="navigateTo('services'); return false;" class="nav-dropdown-item block px-4 py-2.5 text-sm text-white/70 hover:text-gold hover:bg-white/5 transition-colors"> <i data-lucide="code-2" style="width:16px;height:16px;" class="inline mr-2 opacity-60"></i> Custom Website Development </a> <a href="#" onclick="navigateTo('services'); return false;" class="nav-dropdown-item block px-4 py-2.5 text-sm text-white/70 hover:text-gold hover:bg-white/5 transition-colors"> <i data-lucide="monitor" style="width:16px;height:16px;" class="inline mr-2 opacity-60"></i> Virtual &amp; Remote Learning Solutions </a> <a href="#" onclick="navigateTo('services'); return false;" class="nav-dropdown-item block px-4 py-2.5 text-sm text-white/70 hover:text-gold hover:bg-white/5 transition-colors"> <i data-lucide="book-open" style="width:16px;height:16px;" class="inline mr-2 opacity-60"></i> Student Enrichment Programs </a> <a href="#" onclick="navigateTo('services'); return false;" class="nav-dropdown-item block px-4 py-2.5 text-sm text-white/70 hover:text-gold hover:bg-white/5 transition-colors"> <i data-lucide="wrench" style="width:16px;height:16px;" class="inline mr-2 opacity-60"></i> Maintenance &amp; Support </a>
+        </div>
+       </div><!-- Projects Dropdown -->
+       <div class="nav-dropdown-wrapper relative group"><button class="nav-link px-4 py-2 text-sm font-medium text-white hover:text-gold transition-colors duration-300 rounded-lg hover:bg-white/5 flex items-center gap-1 group-hover:text-gold"> Projects &amp; Portfolio <i data-lucide="chevron-down" style="width:16px;height:16px;" class="transition-transform group-hover:rotate-180"></i> </button>
+        <div class="nav-dropdown absolute left-0 mt-0 w-56 bg-navy/95 backdrop-blur-xl border border-white/10 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 py-2"><a href="#" onclick="navigateTo('projects'); return false;" class="nav-dropdown-item block px-4 py-2.5 text-sm text-white/70 hover:text-gold hover:bg-white/5 transition-colors"> <i data-lucide="users" style="width:16px;height:16px;" class="inline mr-2 opacity-60"></i> ICT Click | Educators </a> <a href="#" onclick="navigateTo('projects'); return false;" class="nav-dropdown-item block px-4 py-2.5 text-sm text-white/70 hover:text-gold hover:bg-white/5 transition-colors"> <i data-lucide="book-open" style="width:16px;height:16px;" class="inline mr-2 opacity-60"></i> ICT Click | Learners </a> <a href="#" onclick="navigateTo('projects'); return false;" class="nav-dropdown-item block px-4 py-2.5 text-sm text-white/70 hover:text-gold hover:bg-white/5 transition-colors"> <i data-lucide="terminal" style="width:16px;height:16px;" class="inline mr-2 opacity-60"></i> ICT Click | Developers </a>
+        </div>
+       </div><!-- Resources Dropdown -->
+       <div class="nav-dropdown-wrapper relative group"><button class="nav-link px-4 py-2 text-sm font-medium text-white hover:text-gold transition-colors duration-300 rounded-lg hover:bg-white/5 flex items-center gap-1 group-hover:text-gold"> Resources <i data-lucide="chevron-down" style="width:16px;height:16px;" class="transition-transform group-hover:rotate-180"></i> </button>
+        <div class="nav-dropdown absolute left-0 mt-0 w-56 bg-navy/95 backdrop-blur-xl border border-white/10 rounded-xl shadow-xl opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 py-2"><a href="#" onclick="navigateTo('resources'); return false;" class="nav-dropdown-item block px-4 py-2.5 text-sm text-white/70 hover:text-gold hover:bg-white/5 transition-colors"> <i data-lucide="layers" style="width:16px;height:16px;" class="inline mr-2 opacity-60"></i> My Digital Toolkits </a> <a href="#" onclick="navigateTo('resources'); return false;" class="nav-dropdown-item block px-4 py-2.5 text-sm text-white/70 hover:text-gold hover:bg-white/5 transition-colors"> <i data-lucide="share-2" style="width:16px;height:16px;" class="inline mr-2 opacity-60"></i> Social Media Knowledgebase </a>
+        </div>
+       </div><a href="#" onclick="navigateTo('contact'); return false;" class="glow-btn bg-gold text-navy px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-gold-light transition-colors ml-2">Contact</a>
+      </div><!-- Mobile Menu Toggle --> <button id="mobileToggle" class="lg:hidden text-white p-2" aria-label="Toggle menu" aria-expanded="false"> <i data-lucide="menu" style="width:28px;height:28px;"></i> </button>
+     </div>
+    </nav>
+   </header><!-- MOBILE MENU - OFFSCREEN NAVIGATION -->
+   <aside id="mobileMenu" class="mobile-menu fixed top-0 right-0 w-80 max-w-full h-full bg-navy/98 backdrop-blur-xl z-[60] overflow-y-auto" role="navigation" aria-label="Mobile navigation">
+    <div class="p-6"><!-- Close Button Header -->
+     <div class="flex justify-between items-center mb-8"><span class="text-white font-bold text-lg">Menu</span> <button id="mobileClose" class="text-white/70 hover:text-white transition-colors p-1" aria-label="Close menu" aria-expanded="true"> <i data-lucide="x" style="width:24px;height:24px;"></i> </button>
+     </div><!-- Mobile Navigation Links -->
+     <nav class="space-y-2"><a href="#" onclick="navigateTo('home'); closeMobile(); return false;" class="mobile-link block px-4 py-3 text-white hover:text-gold hover:bg-white/5 rounded-lg transition-colors font-medium">Home</a> <!-- About Mobile Dropdown -->
+      <div class="mobile-dropdown"><button onclick="toggleMobileDropdown('aboutDropdown')" class="w-full flex items-center justify-between px-4 py-3 text-white hover:text-gold hover:bg-white/5 rounded-lg transition-colors font-medium"> <span>About</span> <i data-lucide="chevron-down" style="width:18px;height:18px;" class="dropdown-icon transition-transform"></i> </button>
+       <div id="aboutDropdown" class="hidden pl-4 space-y-1 mt-1"><a href="#" onclick="navigateTo('about'); setTimeout(() => scrollToSection('about-mission-vision'), 350); closeMobile(); return false;" class="block px-4 py-2.5 text-white/70 hover:text-gold hover:bg-white/5 rounded-lg transition-colors text-sm"> <i data-lucide="target" style="width:14px;height:14px;" class="inline mr-2 opacity-60"></i> Mission &amp; Vision </a> <a href="#" onclick="navigateTo('about'); setTimeout(() => scrollToSection('about-work-experience'), 350); closeMobile(); return false;" class="block px-4 py-2.5 text-white/70 hover:text-gold hover:bg-white/5 rounded-lg transition-colors text-sm"> <i data-lucide="briefcase" style="width:14px;height:14px;" class="inline mr-2 opacity-60"></i> Work Experience </a> <a href="#" onclick="navigateTo('about'); setTimeout(() => scrollToSection('about-education'), 350); closeMobile(); return false;" class="block px-4 py-2.5 text-white/70 hover:text-gold hover:bg-white/5 rounded-lg transition-colors text-sm"> <i data-lucide="graduation-cap" style="width:14px;height:14px;" class="inline mr-2 opacity-60"></i> Education </a> <a href="#" onclick="navigateTo('about'); setTimeout(() => scrollToSection('about-skills'), 350); closeMobile(); return false;" class="block px-4 py-2.5 text-white/70 hover:text-gold hover:bg-white/5 rounded-lg transition-colors text-sm"> <i data-lucide="zap" style="width:14px;height:14px;" class="inline mr-2 opacity-60"></i> Skills </a>
+       </div>
+      </div><!-- Services Mobile Dropdown -->
+      <div class="mobile-dropdown"><button onclick="toggleMobileDropdown('servicesDropdown')" class="w-full flex items-center justify-between px-4 py-3 text-white hover:text-gold hover:bg-white/5 rounded-lg transition-colors font-medium"> <span>Services</span> <i data-lucide="chevron-down" style="width:18px;height:18px;" class="dropdown-icon transition-transform"></i> </button>
+       <div id="servicesDropdown" class="hidden pl-4 space-y-1 mt-1"><a href="#" onclick="navigateTo('services'); closeMobile(); return false;" class="block px-4 py-2.5 text-white/70 hover:text-gold hover:bg-white/5 rounded-lg transition-colors text-sm"> <i data-lucide="code-2" style="width:14px;height:14px;" class="inline mr-2 opacity-60"></i> Custom Website Development </a> <a href="#" onclick="navigateTo('services'); closeMobile(); return false;" class="block px-4 py-2.5 text-white/70 hover:text-gold hover:bg-white/5 rounded-lg transition-colors text-sm"> <i data-lucide="monitor" style="width:14px;height:14px;" class="inline mr-2 opacity-60"></i> Virtual &amp; Remote Learning Solutions </a> <a href="#" onclick="navigateTo('services'); closeMobile(); return false;" class="block px-4 py-2.5 text-white/70 hover:text-gold hover:bg-white/5 rounded-lg transition-colors text-sm"> <i data-lucide="book-open" style="width:14px;height:14px;" class="inline mr-2 opacity-60"></i> Student Enrichment Programs </a> <a href="#" onclick="navigateTo('services'); closeMobile(); return false;" class="block px-4 py-2.5 text-white/70 hover:text-gold hover:bg-white/5 rounded-lg transition-colors text-sm"> <i data-lucide="wrench" style="width:14px;height:14px;" class="inline mr-2 opacity-60"></i> Maintenance &amp; Support </a>
+       </div>
+      </div><!-- Projects Mobile Dropdown -->
+      <div class="mobile-dropdown"><button onclick="toggleMobileDropdown('projectsDropdown')" class="w-full flex items-center justify-between px-4 py-3 text-white hover:text-gold hover:bg-white/5 rounded-lg transition-colors font-medium"> <span>Projects &amp; Portfolio</span> <i data-lucide="chevron-down" style="width:18px;height:18px;" class="dropdown-icon transition-transform"></i> </button>
+       <div id="projectsDropdown" class="hidden pl-4 space-y-1 mt-1"><a href="#" onclick="navigateTo('projects'); closeMobile(); return false;" class="block px-4 py-2.5 text-white/70 hover:text-gold hover:bg-white/5 rounded-lg transition-colors text-sm"> <i data-lucide="users" style="width:14px;height:14px;" class="inline mr-2 opacity-60"></i> ICT Click | Educators </a> <a href="#" onclick="navigateTo('projects'); closeMobile(); return false;" class="block px-4 py-2.5 text-white/70 hover:text-gold hover:bg-white/5 rounded-lg transition-colors text-sm"> <i data-lucide="book-open" style="width:14px;height:14px;" class="inline mr-2 opacity-60"></i> ICT Click | Learners </a> <a href="#" onclick="navigateTo('projects'); closeMobile(); return false;" class="block px-4 py-2.5 text-white/70 hover:text-gold hover:bg-white/5 rounded-lg transition-colors text-sm"> <i data-lucide="terminal" style="width:14px;height:14px;" class="inline mr-2 opacity-60"></i> ICT Click | Developers </a>
+       </div>
+      </div><!-- Resources Mobile Dropdown -->
+      <div class="mobile-dropdown"><button onclick="toggleMobileDropdown('resourcesDropdown')" class="w-full flex items-center justify-between px-4 py-3 text-white hover:text-gold hover:bg-white/5 rounded-lg transition-colors font-medium"> <span>Resources</span> <i data-lucide="chevron-down" style="width:18px;height:18px;" class="dropdown-icon transition-transform"></i> </button>
+       <div id="resourcesDropdown" class="hidden pl-4 space-y-1 mt-1"><a href="#" onclick="navigateTo('resources'); closeMobile(); return false;" class="block px-4 py-2.5 text-white/70 hover:text-gold hover:bg-white/5 rounded-lg transition-colors text-sm"> <i data-lucide="layers" style="width:14px;height:14px;" class="inline mr-2 opacity-60"></i> My Digital Toolkits </a> <a href="#" onclick="navigateTo('resources'); closeMobile(); return false;" class="block px-4 py-2.5 text-white/70 hover:text-gold hover:bg-white/5 rounded-lg transition-colors text-sm"> <i data-lucide="share-2" style="width:14px;height:14px;" class="inline mr-2 opacity-60"></i> Social Media Knowledgebase </a>
+       </div>
+      </div><a href="#" onclick="navigateTo('contact'); closeMobile(); return false;" class="mobile-link block px-4 py-3 text-white hover:text-gold hover:bg-white/5 rounded-lg transition-colors font-medium">Contact</a>
+     </nav><!-- Social Links -->
+     <div class="mt-8 pt-6 border-t border-white/10">
+      <p class="text-white/50 text-xs font-medium uppercase tracking-widest mb-4">Follow Us</p>
+      <div class="flex items-center gap-3"><a href="https://www.facebook.com/KTMEduTech/" target="_blank" rel="noopener noreferrer" class="text-white/50 hover:text-gold transition-colors" aria-label="Facebook"> <i data-lucide="facebook" style="width:20px;height:20px;"></i> </a> <a href="https://www.linkedin.com/in/ktmedutech/" target="_blank" rel="noopener noreferrer" class="text-white/50 hover:text-gold transition-colors" aria-label="LinkedIn"> <i data-lucide="linkedin" style="width:20px;height:20px;"></i> </a> <a href="https://github.com/KTM-EduTech" target="_blank" rel="noopener noreferrer" class="text-white/50 hover:text-gold transition-colors" aria-label="GitHub"> <i data-lucide="github" style="width:20px;height:20px;"></i> </a> <a href="https://www.youtube.com/@KTMEduTech" target="_blank" rel="noopener noreferrer" class="text-white/50 hover:text-gold transition-colors" aria-label="YouTube"> <i data-lucide="youtube" style="width:20px;height:20px;"></i> </a>
+      </div>
+     </div>
+    </div>
+   </aside><!-- Mobile Overlay Backdrop -->
+   <div id="mobileOverlay" class="fixed inset-0 bg-black/50 z-[55] hidden" role="presentation"></div><!-- PAGE CONTAINER -->
+   <div id="pageContainer" class="w-full page-transition page-visible"></div><!-- FOOTER - APPEARS AT BOTTOM -->
+   <footer id="footerContainer" class="footer-container w-full bg-navy text-white border-t border-white/10">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+     <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-8">
+      <div>
+       <h4 class="font-bold text-gold text-sm mb-4 uppercase tracking-wider">Quick Links</h4>
+       <ul class="space-y-2">
+        <li><a href="#" onclick="navigateTo('home'); return false;" class="text-white/60 hover:text-gold transition-colors text-sm">Home</a></li>
+        <li><a href="#" onclick="navigateTo('about'); return false;" class="text-white/60 hover:text-gold transition-colors text-sm">About</a></li>
+        <li><a href="#" onclick="navigateTo('services'); return false;" class="text-white/60 hover:text-gold transition-colors text-sm">Services</a></li>
+        <li><a href="#" onclick="navigateTo('projects'); return false;" class="text-white/60 hover:text-gold transition-colors text-sm">Projects</a></li>
+       </ul>
+      </div>
+      <div>
+       <h4 class="font-bold text-gold text-sm mb-4 uppercase tracking-wider">Resources</h4>
+       <ul class="space-y-2">
+        <li><a href="#" onclick="navigateTo('resources'); return false;" class="text-white/60 hover:text-gold transition-colors text-sm">My Toolkits</a></li>
+        <li><a href="https://www.kydmasong.net/" target="_blank" rel="noopener noreferrer" class="text-white/60 hover:text-gold transition-colors text-sm">ICT Click</a></li>
+        <li><a href="#" onclick="navigateTo('contact'); return false;" class="text-white/60 hover:text-gold transition-colors text-sm">Get In Touch</a></li>
+       </ul>
+      </div>
+      <div>
+       <h4 class="font-bold text-gold text-sm mb-4 uppercase tracking-wider">Contact</h4>
+       <ul class="space-y-2">
+        <li><a href="mailto:contact@kydmasong.net" class="text-white/60 hover:text-gold transition-colors text-sm">contact@kydmasong.net</a></li>
+        <li><a href="https://www.kydmasong.net/" target="_blank" rel="noopener noreferrer" class="text-white/60 hover:text-gold transition-colors text-sm">www.kydmasong.net</a></li>
+       </ul>
+      </div>
+      <div>
+       <h4 class="font-bold text-gold text-sm mb-4 uppercase tracking-wider">Follow</h4>
+       <div class="flex items-center gap-3">
+        <a href="https://www.facebook.com/KTMEduTech/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 bg-white/5 rounded-lg flex items-center justify-center text-white/50 hover:bg-gold/20 hover:text-gold transition-all"><i data-lucide="facebook" style="width:16px;height:16px;"></i></a> <a href="https://www.linkedin.com/in/ktmedutech/" target="_blank" rel="noopener noreferrer" class="w-9 h-9 bg-white/5 rounded-lg flex items-center justify-center text-white/50 hover:bg-gold/20 hover:text-gold transition-all"><i data-lucide="linkedin" style="width:16px;height:16px;"></i></a> <a href="https://github.com/KTM-EduTech" target="_blank" rel="noopener noreferrer" class="w-9 h-9 bg-white/5 rounded-lg flex items-center justify-center text-white/50 hover:bg-gold/20 hover:text-gold transition-all"><i data-lucide="github" style="width:16px;height:16px;"></i></a> <a href="https://www.youtube.com/@KTMEduTech" target="_blank" rel="noopener noreferrer" class="w-9 h-9 bg-white/5 rounded-lg flex items-center justify-center text-white/50 hover:bg-gold/20 hover:text-gold transition-all"><i data-lucide="youtube" style="width:16px;height:16px;"></i></a>
+       </div>
+      </div>
+     </div>
+     <div class="border-t border-white/10 pt-8">
+      <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+       <p id="footerText" class="text-white/40 text-xs">Empowering education through innovative technology solutions.</p>
+       <p class="text-white/40 text-xs">© 2026 KTM EduTech. All rights reserved.</p>
+      </div>
+     </div>
+    </div>
+   </footer>
+  </div>
+  <script>
+    // ========== PAGE CONTENT ==========
+    const pages = {
+      home: `
+        <section class="relative w-full h-screen flex items-center justify-center">
+          <img src="https://lh3.googleusercontent.com/pw/AP1GczOHugm7RV_QQzadAh4P-OiPKhMbvoSjs_Iek0MmhD7n_jZC1ExILc6t51j5cWGmycfsnZTqqvB-SLzqtpjfbtIC9VmFMbqpi6eXj_nOB7wS_hWM2y72CM02UF0qhlV_PCcwJLU3d_A3vtEye9wcPsXE=w1300-h731-s-no-gm?authuser=0" alt="Hero background" class="absolute inset-0 w-full h-full object-cover" loading="lazy" onerror="console.error('Hero img failed:', this.src); this.parentElement.style.background='linear-gradient(135deg,#0a1e38,#123456,#1a3a6a)';">
+          <div class="hero-overlay absolute inset-0"></div>
+          <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="absolute top-20 right-10 w-72 h-72 border border-gold/10 rounded-full anim-float" style="animation-delay:0s;"></div>
+            <div class="absolute bottom-20 left-10 w-48 h-48 border border-accent/10 rounded-full anim-float" style="animation-delay:1.5s;"></div>
+            <div class="absolute top-1/3 right-1/4 w-4 h-4 bg-gold/20 rounded-full anim-float" style="animation-delay:0.8s;"></div>
+            <div class="absolute bottom-1/3 left-1/3 w-3 h-3 bg-gold-light/20 rounded-full anim-float" style="animation-delay:2s;"></div>
+          </div>
+          <div class="relative z-10 flex items-center justify-center h-full px-4 sm:px-6 lg:px-8">
+            <div class="max-w-4xl text-center">
+              <div class="anim-fade-up delay-1"><span class="inline-block px-5 py-2 rounded-full border border-gold/30 text-gold text-xs font-semibold tracking-widest uppercase mb-6 backdrop-blur-sm bg-white/5">Educator • Developer • Innovator</span></div>
+              <h1 id="heroTitle" class="anim-fade-up delay-2 text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white leading-tight mb-4">KTM <span class="gold-shimmer">EduTech</span></h1>
+              <p id="heroSubtitle" class="anim-fade-up delay-3 text-lg sm:text-xl md:text-2xl text-gold-light font-light mb-4">Empowering Education Through Technology</p>
+              <p id="heroDescription" class="anim-fade-up delay-4 text-white/60 text-sm sm:text-base max-w-2xl mx-auto mb-10 leading-relaxed">Building innovative digital solutions for students, teachers, and developers. Bridging the gap between education and modern technology.</p>
+              <div class="anim-fade-up delay-5 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="#" onclick="navigateTo('services')" class="glow-btn bg-gold text-navy px-8 py-3.5 rounded-full font-semibold hover:bg-gold-light transition-all text-sm">Explore Services</a>
+                <a href="#" onclick="navigateTo('projects')" class="glow-btn border-2 border-white/30 text-white px-8 py-3.5 rounded-full font-semibold hover:border-gold hover:text-gold transition-all text-sm backdrop-blur-sm">View Projects</a>
+              </div>
+              <div class="anim-fade delay-8 mt-12">
+                <a href="#" onclick="navigateTo('about')" class="inline-flex flex-col items-center text-white/40 hover:text-gold transition-colors">
+                  <span class="text-xs tracking-widest uppercase mb-2">Scroll</span>
+                  <i data-lucide="chevron-down" style="width:20px;height:20px;" class="animate-bounce"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="w-full py-20 sm:py-28 bg-white">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+              <span class="inline-block px-4 py-1.5 rounded-full bg-navy/5 text-navy text-xs font-semibold tracking-widest uppercase mb-4">Overview</span>
+              <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-navy">Professional <span class="text-gold">Summary</span></h2>
+            </div>
+            <div class="max-w-3xl mx-auto">
+              <p class="text-navy/60 text-lg leading-relaxed mb-6">I'm an experienced educator and web developer with a passion for transforming education through technology. With over a decade of experience in ICT education and digital solution development, I bridge the gap between traditional learning and modern tech innovation.</p>
+              <p class="text-navy/60 text-lg leading-relaxed">My expertise spans curriculum design, web development, educational technology platforms, and digital transformation initiatives. I believe in creating accessible, engaging, and innovative solutions that empower both educators and learners.</p>
+            </div>
+          </div>
+        </section>
+
+        <section class="w-full py-20 sm:py-28 bg-slate-50">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+              <span class="inline-block px-4 py-1.5 rounded-full bg-navy/5 text-navy text-xs font-semibold tracking-widest uppercase mb-4">Beyond Work</span>
+              <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-navy">Hobbies &amp; <span class="text-gold">Interests</span></h2>
+            </div>
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div class="card-hover group bg-white rounded-2xl p-6 border border-slate-100 shadow-lg hover:shadow-xl hover:border-gold/30 text-center transition-all">
+                <div class="w-16 h-16 bg-navy/5 rounded-2xl flex items-center justify-center mx-auto mb-5 group-hover:bg-gold/10 transition-colors"><i data-lucide="book" style="width:30px;height:30px;color:#123456;"></i></div>
+                <h3 class="font-bold text-navy text-lg mb-2">Reading</h3>
+                <p class="text-navy/50 text-sm">Tech books, education journals, and science fiction</p>
+              </div>
+              <div class="card-hover group bg-white rounded-2xl p-6 border border-slate-100 shadow-lg hover:shadow-xl hover:border-gold/30 text-center transition-all">
+                <div class="w-16 h-16 bg-navy/5 rounded-2xl flex items-center justify-center mx-auto mb-5 group-hover:bg-gold/10 transition-colors"><i data-lucide="palette" style="width:30px;height:30px;color:#123456;"></i></div>
+                <h3 class="font-bold text-navy text-lg mb-2">Design</h3>
+                <p class="text-navy/50 text-sm">UI/UX design, graphic design, and visual creativity</p>
+              </div>
+              <div class="card-hover group bg-white rounded-2xl p-6 border border-slate-100 shadow-lg hover:shadow-xl hover:border-gold/30 text-center transition-all">
+                <div class="w-16 h-16 bg-navy/5 rounded-2xl flex items-center justify-center mx-auto mb-5 group-hover:bg-gold/10 transition-colors"><i data-lucide="music" style="width:30px;height:30px;color:#123456;"></i></div>
+                <h3 class="font-bold text-navy text-lg mb-2">Music</h3>
+                <p class="text-navy/50 text-sm">Playing instruments and exploring new genres</p>
+              </div>
+              <div class="card-hover group bg-white rounded-2xl p-6 border border-slate-100 shadow-lg hover:shadow-xl hover:border-gold/30 text-center transition-all">
+                <div class="w-16 h-16 bg-navy/5 rounded-2xl flex items-center justify-center mx-auto mb-5 group-hover:bg-gold/10 transition-colors"><i data-lucide="globe" style="width:30px;height:30px;color:#123456;"></i></div>
+                <h3 class="font-bold text-navy text-lg mb-2">Travel</h3>
+                <p class="text-navy/50 text-sm">Exploring cultures and discovering new communities</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="w-full py-20 sm:py-28 bg-white">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+              <span class="inline-block px-4 py-1.5 rounded-full bg-navy/5 text-navy text-xs font-semibold tracking-widest uppercase mb-4">Featured Work</span>
+              <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-navy">My <span class="text-gold">Portfolio</span></h2>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+              <div class="card-hover group bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-xl hover:border-gold/30">
+                <div class="relative h-40 bg-gradient-to-br from-navy to-navy/80 flex items-center justify-center overflow-hidden">
+                  <div class="absolute inset-0 bg-gold/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <i data-lucide="laptop" style="width:48px;height:48px;color:#d4af37;" class="relative z-10"></i>
+                </div>
+                <div class="p-6">
+                  <h3 class="text-lg font-bold text-navy mb-2">ICT Click Platform</h3>
+                  <p class="text-navy/50 text-sm leading-relaxed mb-4">A comprehensive educational technology platform with resources for educators, learners, and developers.</p>
+                  <a href="https://www.kydmasong.net/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-gold font-semibold text-sm hover:text-navy transition-colors">Explore <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
+                </div>
+              </div>
+              <div class="card-hover group bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-xl hover:border-gold/30">
+                <div class="relative h-40 bg-gradient-to-br from-accent to-accent/80 flex items-center justify-center overflow-hidden">
+                  <div class="absolute inset-0 bg-gold/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <i data-lucide="code" style="width:48px;height:48px;color:#fedc69;" class="relative z-10"></i>
+                </div>
+                <div class="p-6">
+                  <h3 class="text-lg font-bold text-navy mb-2">Web Development</h3>
+                  <p class="text-navy/50 text-sm leading-relaxed mb-4">Custom websites and web applications designed for educational institutions and businesses.</p>
+                  <a href="#" onclick="navigateTo('projects')" class="inline-flex items-center gap-2 text-gold font-semibold text-sm hover:text-navy transition-colors">View Projects <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
+                </div>
+              </div>
+              <div class="card-hover group bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100 hover:shadow-xl hover:border-gold/30">
+                <div class="relative h-40 bg-gradient-to-br from-navy/90 to-gold/30 flex items-center justify-center overflow-hidden">
+                  <div class="absolute inset-0 bg-gold/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                  <i data-lucide="award" style="width:48px;height:48px;color:#d4af37;" class="relative z-10"></i>
+                </div>
+                <div class="p-6">
+                  <h3 class="text-lg font-bold text-navy mb-2">Training &amp; Workshops</h3>
+                  <p class="text-navy/50 text-sm leading-relaxed mb-4">ICT training programs, coding bootcamps, and professional development workshops.</p>
+                  <a href="#" onclick="navigateTo('services')" class="inline-flex items-center gap-2 text-gold font-semibold text-sm hover:text-navy transition-colors">Learn More <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      `,
+      
+      about: `
+        <div class="w-full pt-24 pb-20">
+          <section id="about-mission-vision" class="w-full py-20 sm:py-28 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="text-center mb-16">
+                <span class="inline-block px-4 py-1.5 rounded-full bg-navy/5 text-navy text-xs font-semibold tracking-widest uppercase mb-4">About</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-navy">Mission &amp; <span class="text-gold">Vision</span></h2>
+              </div>
+              <div class="grid md:grid-cols-2 gap-8 lg:gap-12">
+                <div class="card-hover bg-gradient-to-br from-navy to-navy/90 rounded-2xl p-8 lg:p-10 text-white shadow-xl">
+                  <div class="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center mb-6"><i data-lucide="target" style="width:28px;height:28px;color:#d4af37;"></i></div>
+                  <h3 class="text-2xl font-bold mb-4 text-gold">Our Mission</h3>
+                  <p id="missionText" class="text-white/70 leading-relaxed">To empower educators and learners with cutting-edge ICT tools and digital solutions that enhance teaching effectiveness and student engagement in today's rapidly evolving technological landscape.</p>
+                </div>
+                <div class="card-hover bg-gradient-to-br from-gold/5 to-gold/10 rounded-2xl p-8 lg:p-10 border border-gold/20 shadow-xl">
+                  <div class="w-14 h-14 bg-navy/10 rounded-xl flex items-center justify-center mb-6"><i data-lucide="eye" style="width:28px;height:28px;color:#123456;"></i></div>
+                  <h3 class="text-2xl font-bold mb-4 text-navy">Our Vision</h3>
+                  <p id="visionText" class="text-navy/70 leading-relaxed">To be a leading provider of educational technology solutions in Southeast Asia, creating accessible and innovative digital platforms that transform the learning experience for every student and educator.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section class="w-full py-20 sm:py-28 bg-gradient-to-b from-slate-50 to-white">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="text-center mb-20">
+                <span class="inline-block px-4 py-1.5 rounded-full bg-navy/5 text-navy text-xs font-semibold tracking-widest uppercase mb-4">Career Journey</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-navy">Work <span class="text-gold">Experience</span></h2>
+                <p class="text-navy/50 text-lg mt-4">Scroll through my career milestones</p>
+              </div>
+
+              <!-- Vertical Timeline -->
+              <div id="about-work-experience" class="relative">
+                <!-- Timeline center line (desktop) -->
+                <div class="hidden lg:block absolute left-1/2 -translate-x-1/2 top-0 bottom-0 w-1 bg-gradient-to-b from-navy via-gold to-gold/0"></div>
+
+                <!-- Timeline Items -->
+                <div class="space-y-12 lg:space-y-20">
+                  <!-- Item 1 -->
+                  <div class="timeline-item group">
+                    <div class="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-0">
+                      <!-- Left content (desktop) / Single content (mobile) -->
+                      <div class="lg:w-1/2 lg:text-right lg:pr-12">
+                        <div class="card-hover bg-white rounded-2xl p-6 shadow-lg border border-slate-200 hover:border-gold/30 hover:shadow-xl transition-all group-hover:-translate-y-1">
+                          <div class="flex lg:justify-end gap-3 mb-4">
+                            <span class="inline-block px-3 py-1.5 rounded-full bg-gold/10 text-gold text-xs font-semibold tracking-wider uppercase">Current</span>
+                            <span class="text-xs font-semibold text-gold uppercase tracking-wider">Aug 2025 – Present</span>
+                          </div>
+                          <h3 class="text-lg font-bold text-navy">Computer Science Teacher (Years 4–6)</h3>
+                          <a href="https://pbiss.ac.th/" target="_blank" rel="noopener noreferrer" class="text-gold hover:text-navy font-semibold text-sm mt-2 inline-flex items-center gap-1 transition-colors">Panyadee British International School of Samui <i data-lucide="external-link" style="width:14px;height:14px;"></i></a>
+                          <p class="text-navy/60 text-sm mt-2">Surat Thani, Thailand</p>
+                          <ul class="mt-4 space-y-2 text-navy/50 text-sm">
+                            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" style="width:16px;height:16px;" class="text-gold mt-0.5 shrink-0"></i><span>Delivered digital literacy and computational thinking</span></li>
+                            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" style="width:16px;height:16px;" class="text-gold mt-0.5 shrink-0"></i><span>Created interactive and engaging lessons</span></li>
+                          </ul>
+                        </div>
+                      </div>
+                      <!-- Timeline marker -->
+                      <div class="hidden lg:flex absolute left-1/2 -translate-x-1/2 w-12 h-12 bg-gold rounded-full items-center justify-center shadow-lg z-10 group-hover:scale-110 transition-transform">
+                        <i data-lucide="book-open" style="width:24px;height:24px;color:#123456;"></i>
+                      </div>
+                      <!-- Right content (desktop) -->
+                      <div class="lg:w-1/2 lg:pl-12"></div>
+                      <!-- Mobile marker -->
+                      <div class="lg:hidden absolute -left-6 top-6 w-10 h-10 bg-gold rounded-full flex items-center justify-center shadow-lg z-10">
+                        <i data-lucide="book-open" style="width:20px;height:20px;color:#123456;"></i>
+                      </div>
+                      <!-- Mobile timeline line -->
+                      <div class="lg:hidden absolute -left-3 top-16 w-0.5 h-24 bg-gold/20"></div>
+                    </div>
+                  </div>
+
+                  <!-- Item 2 -->
+                  <div class="timeline-item group">
+                    <div class="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-0">
+                      <div class="lg:w-1/2 lg:text-right lg:pr-12"></div>
+                      <div class="hidden lg:flex absolute left-1/2 -translate-x-1/2 w-12 h-12 bg-navy rounded-full items-center justify-center shadow-lg z-10 group-hover:scale-110 transition-transform border-4 border-gold">
+                        <i data-lucide="code-2" style="width:24px;height:24px;color:#d4af37;"></i>
+                      </div>
+                      <div class="lg:w-1/2 lg:pl-12">
+                        <div class="card-hover bg-white rounded-2xl p-6 shadow-lg border border-slate-200 hover:border-gold/30 hover:shadow-xl transition-all group-hover:-translate-y-1">
+                          <div class="flex lg:justify-start gap-3 mb-4">
+                            <span class="inline-block px-3 py-1.5 rounded-full bg-gold/10 text-gold text-xs font-semibold tracking-wider uppercase">Current</span>
+                            <span class="text-xs font-semibold text-gold uppercase tracking-wider">Jan 2026 – Present</span>
+                          </div>
+                          <h3 class="text-lg font-bold text-navy">Full-Stack EdTech Designer-Developer</h3>
+                          <a href="https://pbiss.ac.th/" target="_blank" rel="noopener noreferrer" class="text-gold hover:text-navy font-semibold text-sm mt-2 inline-flex items-center gap-1 transition-colors">Panyadee British International School of Samui <i data-lucide="external-link" style="width:14px;height:14px;"></i></a>
+                          <p class="text-navy/60 text-sm mt-2">Surat Thani, Thailand</p>
+                          <ul class="mt-4 space-y-2 text-navy/50 text-sm">
+                            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" style="width:16px;height:16px;" class="text-gold mt-0.5 shrink-0"></i><span>Developed PBISS Student Collection system</span></li>
+                            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" style="width:16px;height:16px;" class="text-gold mt-0.5 shrink-0"></i><span>Built House Point System and Infirmary System</span></li>
+                            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" style="width:16px;height:16px;" class="text-gold mt-0.5 shrink-0"></i><span>Created C-Spinner educational tool</span></li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="lg:hidden absolute -left-6 top-6 w-10 h-10 bg-navy rounded-full flex items-center justify-center shadow-lg z-10 border-4 border-gold">
+                        <i data-lucide="code-2" style="width:20px;height:20px;color:#d4af37;"></i>
+                      </div>
+                      <div class="lg:hidden absolute -left-3 top-16 w-0.5 h-24 bg-gold/20"></div>
+                    </div>
+                  </div>
+
+                  <!-- Item 3 -->
+                  <div class="timeline-item group">
+                    <div class="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-0">
+                      <div class="lg:w-1/2 lg:text-right lg:pr-12">
+                        <div class="card-hover bg-white rounded-2xl p-6 shadow-lg border border-slate-200 hover:border-gold/30 hover:shadow-xl transition-all group-hover:-translate-y-1">
+                          <span class="text-xs font-semibold text-gold uppercase tracking-wider">Feb 2025 – Jul 2025</span>
+                          <h3 class="text-lg font-bold text-navy mt-2">Art Teacher / Computer Science Teacher (K3 - Grade 3)</h3>
+                          <a href="https://trinity.ac.th/" target="_blank" rel="noopener noreferrer" class="text-gold hover:text-navy font-semibold text-sm mt-2 inline-flex items-center gap-1 transition-colors">Trinity International School <i data-lucide="external-link" style="width:14px;height:14px;"></i></a>
+                          <p class="text-navy/60 text-sm mt-2">Bangkok, Thailand</p>
+                          <ul class="mt-4 space-y-2 text-navy/50 text-sm">
+                            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" style="width:16px;height:16px;" class="text-gold mt-0.5 shrink-0"></i><span>Taught Art to middle and high school students</span></li>
+                            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" style="width:16px;height:16px;" class="text-gold mt-0.5 shrink-0"></i><span>Delivered digital literacy and coding to K3–Grade 3</span></li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="hidden lg:flex absolute left-1/2 -translate-x-1/2 w-12 h-12 bg-accent rounded-full items-center justify-center shadow-lg z-10 group-hover:scale-110 transition-transform">
+                        <i data-lucide="palette" style="width:24px;height:24px;color:white;"></i>
+                      </div>
+                      <div class="lg:w-1/2 lg:pl-12"></div>
+                      <div class="lg:hidden absolute -left-6 top-6 w-10 h-10 bg-accent rounded-full flex items-center justify-center shadow-lg z-10">
+                        <i data-lucide="palette" style="width:20px;height:20px;color:white;"></i>
+                      </div>
+                      <div class="lg:hidden absolute -left-3 top-16 w-0.5 h-24 bg-gold/20"></div>
+                    </div>
+                  </div>
+
+                  <!-- Item 4 -->
+                  <div class="timeline-item group">
+                    <div class="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-0">
+                      <div class="lg:w-1/2 lg:text-right lg:pr-12"></div>
+                      <div class="hidden lg:flex absolute left-1/2 -translate-x-1/2 w-12 h-12 bg-gold rounded-full items-center justify-center shadow-lg z-10 group-hover:scale-110 transition-transform">
+                        <i data-lucide="laptop" style="width:24px;height:24px;color:#123456;"></i>
+                      </div>
+                      <div class="lg:w-1/2 lg:pl-12">
+                        <div class="card-hover bg-white rounded-2xl p-6 shadow-lg border border-slate-200 hover:border-gold/30 hover:shadow-xl transition-all group-hover:-translate-y-1">
+                          <span class="text-xs font-semibold text-gold uppercase tracking-wider">Jul 2017 – Aug 2024</span>
+                          <h3 class="text-lg font-bold text-navy mt-2">Computer Science Teacher (K-6)</h3>
+                          <a href="https://anglosingapore.ac.th/31" target="_blank" rel="noopener noreferrer" class="text-gold hover:text-navy font-semibold text-sm mt-2 inline-flex items-center gap-1 transition-colors">Anglo Singapore International School <i data-lucide="external-link" style="width:14px;height:14px;"></i></a>
+                          <p class="text-navy/60 text-sm mt-2">Bangkok, Thailand</p>
+                          <ul class="mt-4 space-y-2 text-navy/50 text-sm">
+                            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" style="width:16px;height:16px;" class="text-gold mt-0.5 shrink-0"></i><span>Integrated CS concepts with IGCSE and A Level standards</span></li>
+                            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" style="width:16px;height:16px;" class="text-gold mt-0.5 shrink-0"></i><span>7+ years of comprehensive computer science education</span></li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="lg:hidden absolute -left-6 top-6 w-10 h-10 bg-gold rounded-full flex items-center justify-center shadow-lg z-10">
+                        <i data-lucide="laptop" style="width:20px;height:20px;color:#123456;"></i>
+                      </div>
+                      <div class="lg:hidden absolute -left-3 top-16 w-0.5 h-24 bg-gold/20"></div>
+                    </div>
+                  </div>
+
+                  <!-- Item 5 -->
+                  <div class="timeline-item group">
+                    <div class="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-0">
+                      <div class="lg:w-1/2 lg:text-right lg:pr-12">
+                        <div class="card-hover bg-white rounded-2xl p-6 shadow-lg border border-slate-200 hover:border-gold/30 hover:shadow-xl transition-all group-hover:-translate-y-1">
+                          <span class="text-xs font-semibold text-gold uppercase tracking-wider">Aug 2016 – Jun 2017</span>
+                          <h3 class="text-lg font-bold text-navy mt-2">Primary/Secondary ICT Teacher (P3-2JS)</h3>
+                          <a href="https://ips.ac.th/" target="_blank" rel="noopener noreferrer" class="text-gold hover:text-navy font-semibold text-sm mt-2 inline-flex items-center gap-1 transition-colors">International Pioneer School <i data-lucide="external-link" style="width:14px;height:14px;"></i></a>
+                          <p class="text-navy/60 text-sm mt-2">Bangkok, Thailand</p>
+                          <ul class="mt-4 space-y-2 text-navy/50 text-sm">
+                            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" style="width:16px;height:16px;" class="text-gold mt-0.5 shrink-0"></i><span>Taught word processing and spreadsheet skills</span></li>
+                            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" style="width:16px;height:16px;" class="text-gold mt-0.5 shrink-0"></i><span>Database fundamentals aligned with IGCSE/A Level</span></li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="hidden lg:flex absolute left-1/2 -translate-x-1/2 w-12 h-12 bg-navy rounded-full items-center justify-center shadow-lg z-10 group-hover:scale-110 transition-transform border-4 border-gold">
+                        <i data-lucide="database" style="width:24px;height:24px;color:#d4af37;"></i>
+                      </div>
+                      <div class="lg:w-1/2 lg:pl-12"></div>
+                      <div class="lg:hidden absolute -left-6 top-6 w-10 h-10 bg-navy rounded-full flex items-center justify-center shadow-lg z-10 border-4 border-gold">
+                        <i data-lucide="database" style="width:20px;height:20px;color:#d4af37;"></i>
+                      </div>
+                      <div class="lg:hidden absolute -left-3 top-16 w-0.5 h-24 bg-gold/20"></div>
+                    </div>
+                  </div>
+
+                  <!-- Item 6 -->
+                  <div class="timeline-item group">
+                    <div class="flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-0">
+                      <div class="lg:w-1/2 lg:text-right lg:pr-12"></div>
+                      <div class="hidden lg:flex absolute left-1/2 -translate-x-1/2 w-12 h-12 bg-accent rounded-full items-center justify-center shadow-lg z-10 group-hover:scale-110 transition-transform">
+                        <i data-lucide="award" style="width:24px;height:24px;color:white;"></i>
+                      </div>
+                      <div class="lg:w-1/2 lg:pl-12">
+                        <div class="card-hover bg-white rounded-2xl p-6 shadow-lg border border-slate-200 hover:border-gold/30 hover:shadow-xl transition-all group-hover:-translate-y-1">
+                          <span class="text-xs font-semibold text-gold uppercase tracking-wider">May 2004 – Jul 2016</span>
+                          <h3 class="text-lg font-bold text-navy mt-2">Computer Teacher &amp; Department Coordinator</h3>
+                          <a href="https://www.acsp.ac.th/" target="_blank" rel="noopener noreferrer" class="text-gold hover:text-navy font-semibold text-sm mt-2 inline-flex items-center gap-1 transition-colors">Assumption College Samutprakarn <i data-lucide="external-link" style="width:14px;height:14px;"></i></a>
+                          <p class="text-navy/60 text-sm mt-2">Samutprakarn, Thailand</p>
+                          <ul class="mt-4 space-y-2 text-navy/50 text-sm">
+                            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" style="width:16px;height:16px;" class="text-gold mt-0.5 shrink-0"></i><span>Taught coding and office productivity tools</span></li>
+                            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" style="width:16px;height:16px;" class="text-gold mt-0.5 shrink-0"></i><span>Coordinated computer science department</span></li>
+                            <li class="flex items-start gap-2"><i data-lucide="check-circle-2" style="width:16px;height:16px;" class="text-gold mt-0.5 shrink-0"></i><span>12+ years building foundational computer science programs</span></li>
+                          </ul>
+                        </div>
+                      </div>
+                      <div class="lg:hidden absolute -left-6 top-6 w-10 h-10 bg-accent rounded-full flex items-center justify-center shadow-lg z-10">
+                        <i data-lucide="award" style="width:20px;height:20px;color:white;"></i>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="about-education" class="w-full py-20 sm:py-28 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="text-center mb-16">
+                <span class="inline-block px-4 py-1.5 rounded-full bg-navy/5 text-navy text-xs font-semibold tracking-widest uppercase mb-4">Background</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-navy">Education &amp; <span class="text-gold">Credentials</span></h2>
+              </div>
+              <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="card-hover group bg-white rounded-2xl p-6 border border-slate-100 shadow-lg hover:border-gold/30 transition-all">
+                  <div class="w-12 h-12 bg-navy rounded-xl flex items-center justify-center mb-4 group-hover:bg-gold transition-colors"><i data-lucide="graduation-cap" style="width:22px;height:22px;color:white;"></i></div>
+                  <h3 class="font-bold text-navy text-lg">Master's in Education</h3>
+                  <p class="text-navy/50 text-sm mt-1">Educational Technology</p>
+                  <div class="mt-3 pt-3 border-t border-slate-100">
+                    <p class="text-navy/40 text-xs uppercase tracking-wider">Specialization in ICT Integration</p>
+                  </div>
+                </div>
+                <div class="card-hover group bg-white rounded-2xl p-6 border border-slate-100 shadow-lg hover:border-gold/30 transition-all">
+                  <div class="w-12 h-12 bg-accent rounded-xl flex items-center justify-center mb-4 group-hover:bg-gold transition-colors"><i data-lucide="award" style="width:22px;height:22px;color:white;"></i></div>
+                  <h3 class="font-bold text-navy text-lg">Bachelor's in IT</h3>
+                  <p class="text-navy/50 text-sm mt-1">Information Technology</p>
+                  <div class="mt-3 pt-3 border-t border-slate-100">
+                    <p class="text-navy/40 text-xs uppercase tracking-wider">Web Development Focus</p>
+                  </div>
+                </div>
+                <div class="card-hover group bg-white rounded-2xl p-6 border border-slate-100 shadow-lg hover:border-gold/30 transition-all sm:col-span-2 lg:col-span-1">
+                  <div class="w-12 h-12 bg-gold rounded-xl flex items-center justify-center mb-4 group-hover:bg-navy transition-colors"><i data-lucide="file-badge" style="width:22px;height:22px;color:white;"></i></div>
+                  <h3 class="font-bold text-navy text-lg">Professional Certifications</h3>
+                  <p class="text-navy/50 text-sm mt-1">Google &amp; Microsoft Certified</p>
+                  <div class="mt-3 pt-3 border-t border-slate-100">
+                    <p class="text-navy/40 text-xs uppercase tracking-wider">Continuous Professional Dev</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section id="about-skills" class="w-full py-20 sm:py-28 bg-navy">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="text-center mb-16">
+                <span class="inline-block px-4 py-1.5 rounded-full bg-white/5 text-gold text-xs font-semibold tracking-widest uppercase mb-4">Expertise</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white">Technical <span class="text-gold">Skills</span></h2>
+              </div>
+              <div class="grid md:grid-cols-2 gap-x-12 gap-y-6">
+                <div>
+                  <div class="flex justify-between text-sm mb-2">
+                    <span class="text-white font-medium">HTML / CSS / JavaScript</span><span class="text-gold">95%</span>
+                  </div>
+                  <div class="w-full h-2.5 bg-white/10 rounded-full overflow-hidden">
+                    <div class="skill-fill h-full bg-gradient-to-r from-gold to-gold-light rounded-full" style="--skill-width:95%;"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-sm mb-2">
+                    <span class="text-white font-medium">PHP / MySQL</span><span class="text-gold">85%</span>
+                  </div>
+                  <div class="w-full h-2.5 bg-white/10 rounded-full overflow-hidden">
+                    <div class="skill-fill h-full bg-gradient-to-r from-gold to-gold-light rounded-full" style="--skill-width:85%;"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-sm mb-2">
+                    <span class="text-white font-medium">WordPress / CMS</span><span class="text-gold">90%</span>
+                  </div>
+                  <div class="w-full h-2.5 bg-white/10 rounded-full overflow-hidden">
+                    <div class="skill-fill h-full bg-gradient-to-r from-gold to-gold-light rounded-full" style="--skill-width:90%;"></div>
+                  </div>
+                </div>
+                <div>
+                  <div class="flex justify-between text-sm mb-2">
+                    <span class="text-white font-medium">UI/UX Design</span><span class="text-gold">80%</span>
+                  </div>
+                  <div class="w-full h-2.5 bg-white/10 rounded-full overflow-hidden">
+                    <div class="skill-fill h-full bg-gradient-to-r from-gold to-gold-light rounded-full" style="--skill-width:80%;"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      `,
+
+      services: `
+        <div class="w-full pt-24 pb-20">
+          <section class="w-full py-20 sm:py-28 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="text-center mb-16">
+                <span class="inline-block px-4 py-1.5 rounded-full bg-navy/5 text-navy text-xs font-semibold tracking-widest uppercase mb-4">What I Offer</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-navy">My <span class="text-gold">Services</span></h2>
+              </div>
+              <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="card-hover group bg-white rounded-2xl p-6 border border-slate-100 shadow-lg hover:shadow-xl hover:border-gold/30 text-center transition-all">
+                  <div class="w-16 h-16 bg-navy/5 rounded-2xl flex items-center justify-center mx-auto mb-5 group-hover:bg-gold/10 transition-colors"><i data-lucide="code-2" style="width:30px;height:30px;color:#123456;"></i></div>
+                  <h3 class="font-bold text-navy text-lg mb-3">Custom Website Development</h3>
+                  <p class="text-navy/50 text-sm leading-relaxed">Professional, responsive websites tailored for educational institutions and businesses.</p>
+                </div>
+                <div class="card-hover group bg-white rounded-2xl p-6 border border-slate-100 shadow-lg hover:shadow-xl hover:border-gold/30 text-center transition-all">
+                  <div class="w-16 h-16 bg-navy/5 rounded-2xl flex items-center justify-center mx-auto mb-5 group-hover:bg-gold/10 transition-colors"><i data-lucide="monitor" style="width:30px;height:30px;color:#123456;"></i></div>
+                  <h3 class="font-bold text-navy text-lg mb-3">Virtual &amp; Remote Learning</h3>
+                  <p class="text-navy/50 text-sm leading-relaxed">Complete e-learning solutions with LMS setup, virtual classroom tools, and online assessments.</p>
+                </div>
+                <div class="card-hover group bg-white rounded-2xl p-6 border border-slate-100 shadow-lg hover:shadow-xl hover:border-gold/30 text-center transition-all">
+                  <div class="w-16 h-16 bg-navy/5 rounded-2xl flex items-center justify-center mx-auto mb-5 group-hover:bg-gold/10 transition-colors"><i data-lucide="book-open" style="width:30px;height:30px;color:#123456;"></i></div>
+                  <h3 class="font-bold text-navy text-lg mb-3">Student Enrichment Programs</h3>
+                  <p class="text-navy/50 text-sm leading-relaxed">ICT training workshops, coding bootcamps, and technology literacy programs for all levels.</p>
+                </div>
+                <div class="card-hover group bg-white rounded-2xl p-6 border border-slate-100 shadow-lg hover:shadow-xl hover:border-gold/30 text-center transition-all">
+                  <div class="w-16 h-16 bg-navy/5 rounded-2xl flex items-center justify-center mx-auto mb-5 group-hover:bg-gold/10 transition-colors"><i data-lucide="wrench" style="width:30px;height:30px;color:#123456;"></i></div>
+                  <h3 class="font-bold text-navy text-lg mb-3">Maintenance &amp; Support</h3>
+                  <p class="text-navy/50 text-sm leading-relaxed">Ongoing technical support, updates, security monitoring, and performance optimization.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      `,
+
+      projects: `
+        <div class="w-full pt-24 pb-20">
+          <section class="w-full py-20 sm:py-28 bg-slate-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="text-center mb-16">
+                <span class="inline-block px-4 py-1.5 rounded-full bg-navy/5 text-navy text-xs font-semibold tracking-widest uppercase mb-4">Portfolio</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-navy">Projects &amp; <span class="text-gold">Portfolio</span></h2>
+              </div>
+              <div class="grid md:grid-cols-3 gap-8">
+                <div class="card-hover group bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100">
+                  <div class="relative h-48 bg-gradient-to-br from-navy to-navy/80 flex items-center justify-center overflow-hidden">
+                    <div class="absolute inset-0 bg-gold/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="text-center z-10"><i data-lucide="users" style="width:48px;height:48px;color:#d4af37;" class="mx-auto mb-3"></i> <span class="text-white/80 text-sm font-medium">For Educators</span></div>
+                  </div>
+                  <div class="p-6">
+                    <h3 class="text-xl font-bold text-navy mb-2">ICT Click | Educators</h3>
+                    <p class="text-navy/50 text-sm leading-relaxed mb-4">A comprehensive platform for teachers with lesson plans, digital tools, and professional development resources.</p>
+                    <a href="https://www.kydmasong.net/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-gold font-semibold text-sm hover:text-navy transition-colors">Visit Project <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
+                  </div>
+                </div>
+                <div class="card-hover group bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100">
+                  <div class="relative h-48 bg-gradient-to-br from-accent to-accent/80 flex items-center justify-center overflow-hidden">
+                    <div class="absolute inset-0 bg-gold/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="text-center z-10"><i data-lucide="book-open" style="width:48px;height:48px;color:#fedc69;" class="mx-auto mb-3"></i> <span class="text-white/80 text-sm font-medium">For Learners</span></div>
+                  </div>
+                  <div class="p-6">
+                    <h3 class="text-xl font-bold text-navy mb-2">ICT Click | Learners</h3>
+                    <p class="text-navy/50 text-sm leading-relaxed mb-4">Interactive learning modules, quizzes, and student-friendly resources for mastering ICT fundamentals.</p>
+                    <a href="https://www.kydmasong.net/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-gold font-semibold text-sm hover:text-navy transition-colors">Visit Project <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
+                  </div>
+                </div>
+                <div class="card-hover group bg-white rounded-2xl overflow-hidden shadow-lg border border-slate-100">
+                  <div class="relative h-48 bg-gradient-to-br from-navy/90 to-gold/30 flex items-center justify-center overflow-hidden">
+                    <div class="absolute inset-0 bg-gold/5 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div class="text-center z-10"><i data-lucide="terminal" style="width:48px;height:48px;color:#d4af37;" class="mx-auto mb-3"></i> <span class="text-white/80 text-sm font-medium">For Developers</span></div>
+                  </div>
+                  <div class="p-6">
+                    <h3 class="text-xl font-bold text-navy mb-2">ICT Click | Developers</h3>
+                    <p class="text-navy/50 text-sm leading-relaxed mb-4">Code snippets, tutorials, API documentation, and developer resources for building educational technology.</p>
+                    <a href="https://www.kydmasong.net/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 text-gold font-semibold text-sm hover:text-navy transition-colors">Visit Project <i data-lucide="arrow-right" style="width:16px;height:16px;"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      `,
+
+      resources: `
+        <div class="w-full pt-24 pb-20">
+          <section class="w-full py-20 sm:py-28 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="text-center mb-16">
+                <span class="inline-block px-4 py-1.5 rounded-full bg-navy/5 text-navy text-xs font-semibold tracking-widest uppercase mb-4">Tools</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-navy">Resources &amp; <span class="text-gold">Toolkits</span></h2>
+              </div>
+              <div class="grid md:grid-cols-2 gap-8">
+                <div class="card-hover bg-gradient-to-br from-navy to-navy/90 rounded-2xl p-8 text-white shadow-xl">
+                  <div class="flex items-start gap-5">
+                    <div class="w-14 h-14 bg-gold/10 rounded-xl flex items-center justify-center shrink-0"><i data-lucide="layers" style="width:28px;height:28px;color:#d4af37;"></i></div>
+                    <div>
+                      <h3 class="text-xl font-bold mb-3 text-gold">My Digital Toolkits</h3>
+                      <p class="text-white/60 text-sm leading-relaxed mb-4">Curated collection of tools, software, and platforms that I use and recommend for education and web development.</p>
+                      <ul class="space-y-2">
+                        <li class="flex items-center gap-2 text-white/50 text-sm"><i data-lucide="check-circle" style="width:14px;height:14px;color:#d4af37;"></i> Google Workspace Suite</li>
+                        <li class="flex items-center gap-2 text-white/50 text-sm"><i data-lucide="check-circle" style="width:14px;height:14px;color:#d4af37;"></i> Design &amp; Multimedia Tools</li>
+                        <li class="flex items-center gap-2 text-white/50 text-sm"><i data-lucide="check-circle" style="width:14px;height:14px;color:#d4af37;"></i> Development Frameworks</li>
+                        <li class="flex items-center gap-2 text-white/50 text-sm"><i data-lucide="check-circle" style="width:14px;height:14px;color:#d4af37;"></i> LMS &amp; Assessment Platforms</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-hover bg-gradient-to-br from-gold/5 to-gold/10 rounded-2xl p-8 border border-gold/20 shadow-xl">
+                  <div class="flex items-start gap-5">
+                    <div class="w-14 h-14 bg-navy/10 rounded-xl flex items-center justify-center shrink-0"><i data-lucide="share-2" style="width:28px;height:28px;color:#123456;"></i></div>
+                    <div>
+                      <h3 class="text-xl font-bold mb-3 text-navy">Social Media Knowledgebase</h3>
+                      <p class="text-navy/60 text-sm leading-relaxed mb-4">Guides and strategies for leveraging social media platforms effectively in educational settings.</p>
+                      <ul class="space-y-2">
+                        <li class="flex items-center gap-2 text-navy/50 text-sm"><i data-lucide="check-circle" style="width:14px;height:14px;color:#d4af37;"></i> Digital Citizenship Guides</li>
+                        <li class="flex items-center gap-2 text-navy/50 text-sm"><i data-lucide="check-circle" style="width:14px;height:14px;color:#d4af37;"></i> Content Creation Tips</li>
+                        <li class="flex items-center gap-2 text-navy/50 text-sm"><i data-lucide="check-circle" style="width:14px;height:14px;color:#d4af37;"></i> Platform Best Practices</li>
+                        <li class="flex items-center gap-2 text-navy/50 text-sm"><i data-lucide="check-circle" style="width:14px;height:14px;color:#d4af37;"></i> Analytics &amp; Engagement</li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      `,
+
+      contact: `
+        <div class="w-full pt-24 pb-20">
+          <section class="w-full py-20 sm:py-28 bg-navy">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div class="text-center mb-16">
+                <span class="inline-block px-4 py-1.5 rounded-full bg-white/5 text-gold text-xs font-semibold tracking-widest uppercase mb-4">Get In Touch</span>
+                <h2 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white">Contact <span class="text-gold">Me</span></h2>
+              </div>
+              <div class="grid md:grid-cols-5 gap-10">
+                <div class="md:col-span-2 space-y-6">
+                  <div class="flex items-start gap-4">
+                    <div class="w-11 h-11 bg-gold/10 rounded-xl flex items-center justify-center shrink-0"><i data-lucide="mail" style="width:20px;height:20px;color:#d4af37;"></i></div>
+                    <div>
+                      <h4 class="text-white font-semibold text-sm">Email</h4>
+                      <p class="text-white/50 text-sm">contact@kydmasong.net</p>
+                    </div>
+                  </div>
+                  <div class="flex items-start gap-4">
+                    <div class="w-11 h-11 bg-gold/10 rounded-xl flex items-center justify-center shrink-0"><i data-lucide="globe" style="width:20px;height:20px;color:#d4af37;"></i></div>
+                    <div>
+                      <h4 class="text-white font-semibold text-sm">Website</h4>
+                      <a href="https://www.kydmasong.net/" target="_blank" rel="noopener noreferrer" class="text-white/50 text-sm hover:text-gold transition-colors">www.kydmasong.net</a>
+                    </div>
+                  </div>
+                  <div class="pt-4">
+                    <h4 class="text-white font-semibold text-sm mb-4">Follow Me</h4>
+                    <div class="flex items-center gap-3">
+                      <a href="https://www.facebook.com/KTMEduTech/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center text-white/50 hover:bg-gold/20 hover:text-gold transition-all"><i data-lucide="facebook" style="width:18px;height:18px;"></i></a>
+                      <a href="https://www.linkedin.com/in/ktmedutech/" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center text-white/50 hover:bg-gold/20 hover:text-gold transition-all"><i data-lucide="linkedin" style="width:18px;height:18px;"></i></a>
+                      <a href="https://github.com/KTM-EduTech" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center text-white/50 hover:bg-gold/20 hover:text-gold transition-all"><i data-lucide="github" style="width:18px;height:18px;"></i></a>
+                      <a href="https://www.youtube.com/@KTMEduTech" target="_blank" rel="noopener noreferrer" class="w-10 h-10 bg-white/5 rounded-xl flex items-center justify-center text-white/50 hover:bg-gold/20 hover:text-gold transition-all"><i data-lucide="youtube" style="width:18px;height:18px;"></i></a>
+                    </div>
+                  </div>
+                </div>
+                <div class="md:col-span-3">
+                  <form id="contactForm" class="space-y-4">
+                    <div class="grid sm:grid-cols-2 gap-4">
+                      <div>
+                        <label for="contactName" class="block text-white/70 text-xs font-medium mb-1.5">Full Name</label>
+                        <input type="text" id="contactName" required class="form-input w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-white/30 outline-none transition-all" placeholder="Your name">
+                      </div>
+                      <div>
+                        <label for="contactEmail" class="block text-white/70 text-xs font-medium mb-1.5">Email Address</label>
+                        <input type="email" id="contactEmail" required class="form-input w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-white/30 outline-none transition-all" placeholder="your@email.com">
+                      </div>
+                    </div>
+                    <div>
+                      <label for="contactSubject" class="block text-white/70 text-xs font-medium mb-1.5">Subject</label>
+                      <input type="text" id="contactSubject" required class="form-input w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-white/30 outline-none transition-all" placeholder="What's this about?">
+                    </div>
+                    <div>
+                      <label for="contactMessage" class="block text-white/70 text-xs font-medium mb-1.5">Message</label>
+                      <textarea id="contactMessage" rows="5" required class="form-input w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white text-sm placeholder-white/30 outline-none transition-all resize-none" placeholder="Tell me about your project..."></textarea>
+                    </div>
+                    <button type="submit" id="contactSubmitBtn" class="glow-btn w-full bg-gold text-navy font-semibold py-3.5 rounded-xl hover:bg-gold-light transition-all text-sm">Send Message</button>
+                    <div id="contactSuccess" class="hidden text-center py-3 bg-green-500/10 border border-green-500/20 rounded-xl">
+                      <p class="text-green-400 text-sm font-medium">✓ Message sent successfully! I'll get back to you soon.</p>
+                    </div>
+                    <div id="contactError" class="hidden text-center py-3 bg-red-500/10 border border-red-500/20 rounded-xl">
+                      <p class="text-red-400 text-sm font-medium">Please open your email client to send the message.</p>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      `
+    };
+
+    // ========== PAGE NAVIGATION ==========
+    let currentPage = '';
+
+    function navigateTo(page) {
+      if (!pages[page] || currentPage === page) return;
+      
+      const container = document.getElementById('pageContainer');
+      container.classList.remove('page-visible');
+      container.classList.add('page-transition');
+
+      setTimeout(() => {
+        container.innerHTML = pages[page];
+        currentPage = page;
+        container.classList.remove('page-transition');
+        container.classList.add('page-visible');
+        
+        document.getElementById('app-wrapper').scrollTop = 0;
+        updateNavActive(page);
+        afterPageRender();
+      }, 300);
+    }
+
+    // ========== SMOOTH SCROLL ANCHORING ==========
+    function scrollToSection(sectionId) {
+      const appWrapper = document.getElementById('app-wrapper');
+      const section = document.getElementById(sectionId);
+      
+      if (section && appWrapper) {
+        const sectionTop = section.offsetTop;
+        appWrapper.scrollTo({
+          top: sectionTop,
+          behavior: 'smooth'
+        });
+      }
+    }
+
+    function updateNavActive(page) {
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.classList.remove('nav-active');
+      });
+      document.querySelectorAll(`a[onclick*="navigateTo('${page}')"]`).forEach(link => {
+        link.classList.add('nav-active');
+      });
+    }
+
+    // ========== DEFAULT CONFIG ==========
+    const defaultConfig = {
+      background_color: '#123456',
+      surface_color: '#ffffff',
+      text_color: '#123456',
+      primary_action_color: '#d4af37',
+      secondary_action_color: '#407cdc',
+      font_family: 'Poppins',
+      font_size: 16,
+      hero_title: 'KTM EduTech',
+      hero_subtitle: 'Empowering Education Through Technology',
+      hero_description: 'Building innovative digital solutions for students, teachers, and developers. Bridging the gap between education and modern technology.',
+      mission_text: 'To empower educators and learners with cutting-edge ICT tools and digital solutions that enhance teaching effectiveness and student engagement in today\'s rapidly evolving technological landscape.',
+      vision_text: 'To be a leading provider of educational technology solutions in Southeast Asia, creating accessible and innovative digital platforms that transform the learning experience for every student and educator.',
+      footer_text: 'Empowering education through innovative technology solutions.'
+    };
+
+    // ========== ELEMENT SDK INIT ==========
+    function applyConfig(config) {
+      const c = { ...defaultConfig, ...config };
+      const font = c.font_family || defaultConfig.font_family;
+      const fontStack = `${font}, 'Poppins', sans-serif`;
+
+      const wrapper = document.getElementById('app-wrapper');
+      if (wrapper) wrapper.style.fontFamily = fontStack;
+
+      const heroTitleEl = document.getElementById('heroTitle');
+      if (heroTitleEl) {
+        const parts = (c.hero_title || defaultConfig.hero_title).split(' ');
+        if (parts.length > 1) {
+          heroTitleEl.innerHTML = parts.slice(0, -1).join(' ') + ' <span class="gold-shimmer">' + parts[parts.length - 1] + '</span>';
+        } else {
+          heroTitleEl.textContent = c.hero_title || defaultConfig.hero_title;
+        }
+      }
+      const heroSub = document.getElementById('heroSubtitle');
+      if (heroSub) heroSub.textContent = c.hero_subtitle || defaultConfig.hero_subtitle;
+      const heroDesc = document.getElementById('heroDescription');
+      if (heroDesc) heroDesc.textContent = c.hero_description || defaultConfig.hero_description;
+      const missionEl = document.getElementById('missionText');
+      if (missionEl) missionEl.textContent = c.mission_text || defaultConfig.mission_text;
+      const visionEl = document.getElementById('visionText');
+      if (visionEl) visionEl.textContent = c.vision_text || defaultConfig.vision_text;
+      const footerEl = document.getElementById('footerText');
+      if (footerEl) footerEl.textContent = c.footer_text || defaultConfig.footer_text;
+    }
+
+    if (window.elementSdk) {
+      window.elementSdk.init({
+        defaultConfig,
+        onConfigChange: async (config) => {
+          applyConfig(config);
+        },
+        mapToCapabilities: (config) => ({
+          recolorables: [
+            { get: () => config.background_color || defaultConfig.background_color, set: (v) => { config.background_color = v; window.elementSdk.setConfig({ background_color: v }); } },
+            { get: () => config.surface_color || defaultConfig.surface_color, set: (v) => { config.surface_color = v; window.elementSdk.setConfig({ surface_color: v }); } },
+            { get: () => config.text_color || defaultConfig.text_color, set: (v) => { config.text_color = v; window.elementSdk.setConfig({ text_color: v }); } },
+            { get: () => config.primary_action_color || defaultConfig.primary_action_color, set: (v) => { config.primary_action_color = v; window.elementSdk.setConfig({ primary_action_color: v }); } },
+            { get: () => config.secondary_action_color || defaultConfig.secondary_action_color, set: (v) => { config.secondary_action_color = v; window.elementSdk.setConfig({ secondary_action_color: v }); } }
+          ],
+          borderables: [],
+          fontEditable: {
+            get: () => config.font_family || defaultConfig.font_family,
+            set: (v) => { config.font_family = v; window.elementSdk.setConfig({ font_family: v }); }
+          },
+          fontSizeable: {
+            get: () => config.font_size || defaultConfig.font_size,
+            set: (v) => { config.font_size = v; window.elementSdk.setConfig({ font_size: v }); }
+          }
+        }),
+        mapToEditPanelValues: (config) => new Map([
+          ['hero_title', config.hero_title || defaultConfig.hero_title],
+          ['hero_subtitle', config.hero_subtitle || defaultConfig.hero_subtitle],
+          ['hero_description', config.hero_description || defaultConfig.hero_description],
+          ['mission_text', config.mission_text || defaultConfig.mission_text],
+          ['vision_text', config.vision_text || defaultConfig.vision_text],
+          ['footer_text', config.footer_text || defaultConfig.footer_text]
+        ])
+      });
+    }
+
+    // ========== NAVBAR SCROLL EFFECT ==========
+    const navbar = document.getElementById('navbar');
+    const appWrapper = document.getElementById('app-wrapper');
+    const footerContainer = document.getElementById('footerContainer');
+
+    appWrapper.addEventListener('scroll', () => {
+      // Navbar background effect
+      if (appWrapper.scrollTop > 80) {
+        navbar.style.background = 'rgba(18,52,86,0.95)';
+        navbar.style.backdropFilter = 'blur(20px)';
+        navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.2)';
+      } else {
+        navbar.style.background = 'transparent';
+        navbar.style.backdropFilter = 'none';
+        navbar.style.boxShadow = 'none';
+      }
+
+      // Footer visibility effect
+      const scrollHeight = appWrapper.scrollHeight;
+      const clientHeight = appWrapper.clientHeight;
+      const scrollPosition = appWrapper.scrollTop;
+      const distanceToBottom = scrollHeight - clientHeight - scrollPosition;
+
+      // Show footer near bottom, or always on short pages
+      if (distanceToBottom < 600 || scrollHeight <= clientHeight + 50) {
+        footerContainer.classList.add('visible');
+      } else {
+        footerContainer.classList.remove('visible');
+      }
+    });
+
+
+    // ========== SKILL BARS ==========
+    function activateSkillBars() {
+      const fills = document.querySelectorAll('.skill-fill');
+      if (!fills.length) return;
+      if (!('IntersectionObserver' in window)) {
+        fills.forEach(el => el.classList.add('active'));
+        return;
+      }
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.25 });
+      fills.forEach(el => observer.observe(el));
+    }
+
+    // ========== CONTACT FORM ==========
+    function bindContactForm() {
+      const form = document.getElementById('contactForm');
+      if (!form || form.dataset.bound === '1') return;
+      form.dataset.bound = '1';
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const name = (document.getElementById('contactName') || {}).value || '';
+        const email = (document.getElementById('contactEmail') || {}).value || '';
+        const subject = (document.getElementById('contactSubject') || {}).value || '';
+        const message = (document.getElementById('contactMessage') || {}).value || '';
+        const successEl = document.getElementById('contactSuccess');
+        const errorEl = document.getElementById('contactError');
+        if (successEl) successEl.classList.add('hidden');
+        if (errorEl) errorEl.classList.add('hidden');
+
+        const body = `Name: ${name}\nEmail: ${email}\n\n${message}`;
+        const mailto = `mailto:contact@kydmasong.net?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+
+        try {
+          window.location.href = mailto;
+          if (successEl) {
+            successEl.classList.remove('hidden');
+            successEl.querySelector('p').textContent = '✓ Opening your email client… If nothing opens, email contact@kydmasong.net directly.';
+          }
+          form.reset();
+        } catch (err) {
+          if (errorEl) errorEl.classList.remove('hidden');
+        }
+      });
+    }
+
+    function afterPageRender() {
+      lucide.createIcons();
+      if (window.elementSdk) {
+        applyConfig(window.elementSdk.config);
+      }
+      activateSkillBars();
+      bindContactForm();
+      // Re-check footer on short pages
+      const appWrapper = document.getElementById('app-wrapper');
+      const footerContainer = document.getElementById('footerContainer');
+      if (appWrapper && footerContainer) {
+        const scrollHeight = appWrapper.scrollHeight;
+        const clientHeight = appWrapper.clientHeight;
+        if (scrollHeight <= clientHeight + 50) {
+          footerContainer.classList.add('visible');
+        }
+      }
+    }
+
+
+    // ========== MOBILE MENU CONTROL ==========
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    const mobileClose = document.getElementById('mobileClose');
+    const mobileOverlay = document.getElementById('mobileOverlay');
+
+    function openMobile() {
+      mobileMenu.classList.add('open');
+      mobileOverlay.classList.remove('hidden');
+      mobileToggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobile() {
+      mobileMenu.classList.remove('open');
+      mobileOverlay.classList.add('hidden');
+      mobileToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = 'auto';
+    }
+
+    function toggleMobileDropdown(dropdownId) {
+      const dropdown = document.getElementById(dropdownId);
+      const button = dropdown.previousElementSibling;
+      const icon = button.querySelector('.dropdown-icon');
+      
+      dropdown.classList.toggle('hidden');
+      icon.style.transform = dropdown.classList.contains('hidden') ? 'rotate(0deg)' : 'rotate(180deg)';
+    }
+
+    mobileToggle.addEventListener('click', openMobile);
+    mobileClose.addEventListener('click', closeMobile);
+    mobileOverlay.addEventListener('click', closeMobile);
+
+    // Icons in fixed navbar/footer
+    if (window.lucide) lucide.createIcons();
+    navigateTo('home');
+    // afterPageRender runs inside navigateTo after content inject
+  </script>
+ </body>
+</html>
+
+
+</body>
+</html>
